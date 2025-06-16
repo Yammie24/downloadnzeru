@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Download NzeruApp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, #f1f8ff, #ffffff);
+      color: #2c3e50;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      color: #34495e;
+      margin-bottom: 20px;
+    }
+
+    p.subtitle {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      background-color: #f9f9f9;
+    }
+
+    .card-content {
+      padding: 24px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 12px;
+    }
+
+    .card-description {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    .download-btn {
+      background: #3f51b5;
+      color: #fff;
+      padding: 12px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background: #303f9f;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 60px;
+      color: #2c3e50;
+    }
+
+    .guide-text {
+      margin-top: 12px;
+      font-size: 16px;
+      color: #444;
+      white-space: pre-line;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      .card-title {
+        font-size: 20px;
+      }
+
+      .card-description, .guide-text, p.subtitle {
+        font-size: 15px;
+      }
+
+      .download-btn {
+        width: 100%;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to NzeruApp</h1>
+    <p class="subtitle">
+      NzeruApp is an innovative learning platform for teachers, students, and researchers.<br><br>
+      It includes Books, Past Papers, Polls & Quizzes, and a note section to help instructors evaluate understanding anonymously and in real-time.
+    </p>
+
+    <div class="card">
+      <img src="assets/images/icon.png" alt="Nzeru App Icon" />
+      <div class="card-content">
+        <div class="card-title">Download NzeruApp</div>
+        <div class="card-description">Start using subject polls and books instantly!</div>
+        <button class="download-btn" onclick="downloadApp()">Download APK</button>
+      </div>
+    </div>
+
+    <div class="section-title">📥 Installation Guide (Android)</div>
+    <p class="guide-text">
+1. Tap the "Download APK" button.  
+2. Open it from your Downloads.  
+3. Allow "Unknown Sources" if prompted.  
+4. Install and explore!
+    </p>
+
+    <div class="footer">Made with ❤️ by the Nzeru Team</div>
+  </div>
+
+  <script>
+    function downloadApp() {
+      const downloadUrl = "https://downloadnzeru.web.app/assets/nzeru-app-v1.0.1.apk"; // Easily change link here
+      window.open(downloadUrl, "_blank");
+    }
+  </script>
+</body>
+</html>
