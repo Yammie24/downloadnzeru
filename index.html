@@ -8,18 +8,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #005D36;
-      --primary-dark: #3a0ca3;
-      --secondary: #516F50;
-      --accent: #f72585;
-      --light: #f8f9fa;
-      --dark: #212529;
-      --gray: #6c757d;
-      --light-gray: #e9ecef;
-      --success: #4cc9f0;
+      --primary: #1238e0;         /* Vibrant Indigo */
+      --primary-dark: #4338CA;     /* Darker Indigo */
+      --primary-light: #6366F1;    /* Lighter Indigo */
+      --secondary: #7C3AED;       /* Purple Accent */
+      --accent: #10B981;          /* Emerald Green Accent */
+      --light: #FFFFFF;           /* Clean White */
+      --dark: #111827;            /* Rich Dark Gray */
+      --gray: #6B7280;            /* Medium Gray */
+      --light-gray: #F3F4F6;      /* Light Gray */
+      --extra-light: #F9FAFB;     /* Very Light Gray */
       --border-radius: 16px;
-      --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-      --transition: all 0.3s ease;
+      --border-radius-lg: 24px;
+      --shadow: 0 8px 30px rgba(79, 70, 229, 0.12);
+      --shadow-lg: 0 15px 40px rgba(79, 70, 229, 0.15);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     }
 
     * {
@@ -30,7 +34,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      background: var(--extra-light);
       color: var(--dark);
       line-height: 1.6;
       min-height: 100vh;
@@ -47,38 +51,54 @@
     }
 
     header {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       animation: fadeInDown 0.8s ease;
     }
 
     .logo {
-      width: 100px;
-      height: 100px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 24px;
-      margin: 0 auto 20px;
+      width: 120px;
+      height: 120px;
+      background: var(--gradient);
+      border-radius: var(--border-radius-lg);
+      margin: 0 auto 25px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-lg);
       padding: 15px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
     }
 
     .logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      z-index: 1;
     }
 
     h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 800;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      background: var(--gradient);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 16px;
       letter-spacing: -0.5px;
+      line-height: 1.2;
     }
 
     .subtitle {
@@ -110,23 +130,25 @@
 
     .card {
       background-color: white;
-      border-radius: var(--border-radius);
+      border-radius: var(--border-radius-lg);
       box-shadow: var(--shadow);
       overflow: hidden;
       transition: var(--transition);
       height: 100%;
       display: flex;
       flex-direction: column;
+      position: relative;
+      border: 1px solid rgba(79, 70, 229, 0.1);
     }
 
     .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-lg);
     }
 
     .app-preview {
-      height: 280px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      height: 300px;
+      background: var(--gradient);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -147,13 +169,16 @@
     }
 
     .phone-mockup {
-      width: 200px;
-      height: 400px;
+      width: 220px;
+      height: 440px;
       background: #fff;
-      border-radius: 30px;
+      border-radius: 40px;
       position: relative;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
       overflow: hidden;
+      border: 8px solid var(--dark);
+      transition: var(--transition);
+      animation: float 6s ease-in-out infinite;
     }
 
     .phone-screen {
@@ -164,43 +189,60 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-screen::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 30px;
+      background: var(--dark);
+      border-top-left-radius: 32px;
+      border-top-right-radius: 32px;
     }
 
     .app-icon {
-      width: 90px;
-      height: 90px;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      border-radius: 22px;
+      width: 100px;
+      height: 100px;
+      background: var(--gradient);
+      border-radius: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
-      padding: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 12px 25px rgba(79, 70, 229, 0.3);
+      padding: 20px;
+      z-index: 1;
     }
 
     .app-icon img {
-      width: 70%;
-      height: 70%;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
     }
 
     .app-name {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      z-index: 1;
     }
 
     .app-tagline {
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--gray);
       max-width: 80%;
+      z-index: 1;
     }
 
     .card-content {
-      padding: 30px;
+      padding: 35px;
       flex-grow: 1;
       display: flex;
       flex-direction: column;
@@ -211,6 +253,19 @@
       font-weight: 700;
       color: var(--dark);
       margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .card-title::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--gradient);
+      border-radius: 3px;
     }
 
     .card-description {
@@ -221,19 +276,20 @@
     }
 
     .version-info {
-      background: var(--light-gray);
+      background: rgba(79, 70, 229, 0.1);
       padding: 8px 15px;
       border-radius: 50px;
       display: inline-block;
       font-size: 0.9rem;
-      color: var(--gray);
+      color: var(--primary-dark);
       margin-bottom: 20px;
+      font-weight: 500;
     }
 
     .download-btn {
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      background: var(--gradient);
       color: white;
-      padding: 16px 32px;
+      padding: 18px 32px;
       font-size: 1.1rem;
       font-weight: 600;
       border: none;
@@ -244,14 +300,30 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+      box-shadow: 0 5px 20px rgba(79, 70, 229, 0.3);
       margin-top: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
     }
 
     .download-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
-      background: linear-gradient(45deg, var(--primary-dark), var(--secondary));
+      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+    }
+
+    .download-btn:hover::before {
+      left: 100%;
     }
 
     .download-btn i {
@@ -260,10 +332,11 @@
 
     .guide-section {
       background: white;
-      border-radius: var(--border-radius);
+      border-radius: var(--border-radius-lg);
       padding: 40px;
       box-shadow: var(--shadow);
       text-align: left;
+      border: 1px solid rgba(79, 70, 229, 0.1);
     }
 
     .section-title {
@@ -276,6 +349,17 @@
       align-items: center;
       justify-content: center;
       gap: 15px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      width: 80px;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 2px;
     }
 
     .guide-steps {
@@ -288,15 +372,18 @@
     .step {
       background: var(--light);
       border-radius: var(--border-radius);
-      padding: 25px;
+      padding: 30px 25px 25px;
       position: relative;
       transition: var(--transition);
       counter-increment: step-counter;
+      border: 1px solid rgba(79, 70, 229, 0.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
     }
 
     .step:hover {
       transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.1);
+      border-color: rgba(79, 70, 229, 0.2);
     }
 
     .step::before {
@@ -306,7 +393,7 @@
       left: -15px;
       width: 40px;
       height: 40px;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      background: var(--gradient);
       color: white;
       border-radius: 50%;
       display: flex;
@@ -314,13 +401,14 @@
       justify-content: center;
       font-weight: 700;
       font-size: 1.2rem;
-      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+      box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+      z-index: 1;
     }
 
     .step-title {
       font-size: 1.3rem;
       font-weight: 600;
-      color: var(--primary);
+      color: var(--primary-dark);
       margin-bottom: 12px;
       display: flex;
       align-items: center;
@@ -328,10 +416,10 @@
     }
 
     .step-icon {
-      width: 36px;
-      height: 36px;
-      background: rgba(67, 97, 238, 0.1);
-      border-radius: 10px;
+      width: 40px;
+      height: 40px;
+      background: rgba(79, 70, 229, 0.1);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -339,12 +427,14 @@
 
     .step-icon i {
       color: var(--primary);
+      font-size: 1.1rem;
     }
 
     .step-content {
       color: var(--gray);
       font-size: 1rem;
       line-height: 1.6;
+      padding-left: 50px;
     }
 
     .features {
@@ -356,31 +446,44 @@
 
     .feature {
       background: white;
-      padding: 25px 20px;
+      padding: 30px 20px;
       border-radius: var(--border-radius);
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
       transition: var(--transition);
+      border: 1px solid rgba(79, 70, 229, 0.1);
     }
 
     .feature:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.1);
+      border-color: rgba(79, 70, 229, 0.2);
     }
 
     .feature-icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(67, 97, 238, 0.1);
-      border-radius: 16px;
+      width: 70px;
+      height: 70px;
+      background: rgba(79, 70, 229, 0.1);
+      border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 20px;
+      transition: var(--transition);
+    }
+
+    .feature:hover .feature-icon {
+      background: var(--gradient);
+      transform: rotate(5deg) scale(1.1);
+    }
+
+    .feature:hover .feature-icon i {
+      color: white;
     }
 
     .feature-icon i {
-      font-size: 28px;
+      font-size: 30px;
       color: var(--primary);
+      transition: var(--transition);
     }
 
     .feature-title {
@@ -396,14 +499,15 @@
     }
 
     .release-date {
-      background: var(--light-gray);
+      background: rgba(79, 70, 229, 0.1);
       padding: 8px 15px;
       border-radius: 50px;
       display: inline-block;
       font-size: 0.9rem;
-      color: var(--gray);
+      color: var(--primary-dark);
       margin-bottom: 20px;
       border: 1px dashed var(--primary);
+      font-weight: 500;
     }
 
     .release-date i {
@@ -412,54 +516,73 @@
     }
 
     footer {
-      margin-top: 60px;
-      padding-top: 30px;
-      border-top: 1px solid var(--light-gray);
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(79, 70, 229, 0.1);
       color: var(--gray);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     .footer-content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
     }
 
     .footer-links {
       display: flex;
+      flex-wrap: wrap;
       gap: 25px;
-      margin: 15px 0;
+      margin: 20px 0;
+      justify-content: center;
     }
 
     .footer-link {
       color: var(--primary);
       text-decoration: none;
       transition: var(--transition);
+      font-weight: 500;
+      position: relative;
+    }
+
+    .footer-link::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
     }
 
     .footer-link:hover {
-      color: var(--secondary);
-      text-decoration: underline;
+      color: var(--primary-dark);
+    }
+
+    .footer-link:hover::after {
+      width: 100%;
     }
 
     .made-with-love {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-weight: 300;
+      font-weight: 400;
     }
 
     .made-with-love i {
       color: var(--accent);
+      animation: pulse 1.5s infinite;
     }
 
     .new-badge {
       background: var(--accent);
       color: white;
-      padding: 2px 8px;
+      padding: 3px 10px;
       border-radius: 10px;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: bold;
       margin-left: 8px;
       vertical-align: middle;
@@ -467,46 +590,67 @@
     }
 
     .whats-new {
-  background: rgba(0, 93, 54, 0.05);
-  border-radius: var(--border-radius);
-  padding: 15px;
-  margin-bottom: 20px;
-  text-align: left;
-  border-left: 4px solid var(--primary);
-}
+      background: rgba(16, 185, 129, 0.05);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      margin-bottom: 25px;
+      text-align: left;
+      border-left: 4px solid var(--accent);
+      position: relative;
+      overflow: hidden;
+    }
 
-.whats-new-title {
-  font-size: 1.1rem;
-  color: var(--primary);
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+    .whats-new::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+    }
 
-.update-list {
-  list-style: none;
-  padding-left: 0;
-}
+    .whats-new-title {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
 
-.update-list li {
-  margin-bottom: 8px;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 0.95rem;
-  color: var(--dark);
-}
+    .update-list {
+      list-style: none;
+      padding-left: 0;
+    }
 
-.update-list li i {
-  color: var(--primary);
-  margin-top: 3px;
-  flex-shrink: 0;
-}
+    .update-list li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: var(--dark);
+      position: relative;
+      padding-left: 25px;
+    }
 
-.update-list li strong {
-  color: var(--primary);
-}
+    .update-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .update-list li strong {
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
 
     /* Animations */
     @keyframes fadeInDown {
@@ -522,8 +666,19 @@
 
     @keyframes pulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      50% { transform: scale(1.1); }
       100% { transform: scale(1); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes shine {
+      0% { transform: rotate(30deg) translate(-30%, -30%); }
+      100% { transform: rotate(30deg) translate(30%, 30%); }
     }
 
     .pulse {
@@ -533,7 +688,7 @@
     /* Responsive adjustments */
     @media (max-width: 768px) {
       h1 {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
       }
       
       .subtitle {
@@ -541,60 +696,83 @@
       }
       
       .card-title, .section-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
       
       .app-preview {
-        height: 220px;
+        height: 250px;
       }
       
       .phone-mockup {
-        width: 160px;
-        height: 320px;
+        width: 180px;
+        height: 360px;
+        border-radius: 35px;
       }
       
       .guide-section {
-        padding: 30px 20px;
+        padding: 30px 25px;
       }
       
-      .logo, .app-icon {
+      .logo {
+        width: 100px;
+        height: 100px;
+      }
+
+      .app-icon {
         width: 80px;
         height: 80px;
+      }
+
+      .step-content {
+        padding-left: 0;
       }
     }
 
     @media (max-width: 480px) {
       body {
-        padding: 20px 15px;
+        padding: 25px 15px;
       }
       
       h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       
       .logo {
-        width: 150px;
-        height: 150px;
+        width: 90px;
+        height: 90px;
       }
       
       .card-content {
-        padding: 25px 20px;
+        padding: 30px 20px;
       }
       
       .download-btn {
-        padding: 14px 20px;
+        padding: 16px 24px;
         font-size: 1rem;
         width: 100%;
       }
       
       .phone-mockup {
-        width: 140px;
-        height: 280px;
+        width: 160px;
+        height: 320px;
+        border-radius: 30px;
       }
       
       .app-icon {
         width: 70px;
         height: 70px;
+      }
+
+      .guide-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-links {
+        gap: 15px;
       }
     }
   </style>
@@ -617,9 +795,9 @@
         <div class="app-preview">
           <div class="phone-mockup">
             <div class="phone-screen">
-              <!-- <div class="app-icon">
+              <div class="app-icon">
                 <img src="assets/images/icon.png" alt="App Icon">
-              </div> -->
+              </div>
               <div class="app-name">NzeruApp</div>
               <div class="app-tagline">Empowering Education Through Technology</div>
             </div>
@@ -631,24 +809,24 @@
             Get instant access to subject polls, educational books, quizzes, and more. Transform your learning experience today!
           </div>
           <div class="version-info">
-            <i class="fas fa-info-circle"></i> Version 1.0.2 (Android)
+            <i class="fas fa-info-circle"></i> Version 1.0.4 (Android)
             <span class="new-badge">New!</span>
           </div>
           <div class="release-date">
-            <i class="far fa-calendar-alt"></i> Released: June 21, 2025
+            <i class="far fa-calendar-alt"></i> Released: July 14, 2025
           </div>
           <div class="whats-new">
-          <h3 class="whats-new-title">
-            <i class="fas fa-star"></i> What's New in v1.0.2
-          </h3>
-          <ul class="update-list">
-            <li><i class="fas fa-check-circle"></i> <strong>New Feature:</strong> Offline mode for past papers</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Improved:</strong> Faster quiz loading times</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Fixed:</strong> Background color on add/update note dialog</li>
-            <li><i class="fas fa-check-circle"></i> <strong>Security:</strong> Enhanced data encryption</li>
-          </ul>
-        </div>
-            <button class="download-btn pulse" onclick="downloadApp()">
+            <h3 class="whats-new-title">
+              <i class="fas fa-star"></i> What's New in v1.0.4
+            </h3>
+            <ul class="update-list">
+              <li><strong>New Feature:</strong> Offline mode for past papers</li>
+              <li><strong>Improved:</strong> Redesigned UI with dark mode</li>
+              <li><strong>Fixed:</strong> Performance issues on older devices</li>
+              <li><strong>Security:</strong> Enhanced data encryption</li>
+            </ul>
+          </div>
+          <button class="download-btn pulse" onclick="downloadApp()">
             <i class="fas fa-download"></i> Download APK
           </button>
         </div>
@@ -666,7 +844,7 @@
               </div>
               Download the APK
             </div>
-            <p class="step-content">Tap the "Download APK" button to get the installation file.</p>
+            <p class="step-content">Tap the "Download APK" button to get the installation file (approximately 25MB).</p>
           </div>
           
           <div class="step">
@@ -676,7 +854,7 @@
               </div>
               Open from Downloads
             </div>
-            <p class="step-content">Locate and open the downloaded file in your device's Downloads folder.</p>
+            <p class="step-content">Locate and open the downloaded file in your device's Downloads folder or notification panel.</p>
           </div>
           
           <div class="step">
@@ -686,7 +864,7 @@
               </div>
               Allow Unknown Sources
             </div>
-            <p class="step-content">If prompted, enable "Install from Unknown Sources" in your security settings.</p>
+            <p class="step-content">If prompted, enable "Install from Unknown Sources" in your security settings (we're 100% safe!).</p>
           </div>
           
           <div class="step">
@@ -696,7 +874,7 @@
               </div>
               Install & Explore
             </div>
-            <p class="step-content">Complete the installation and start your enhanced learning journey!</p>
+            <p class="step-content">Complete the installation (takes about 30 seconds) and start your enhanced learning journey!</p>
           </div>
         </div>
         
@@ -706,7 +884,7 @@
               <i class="fas fa-book-open"></i>
             </div>
             <h3 class="feature-title">Digital Books</h3>
-            <p class="feature-desc">Access textbooks and study materials anytime, anywhere.</p>
+            <p class="feature-desc">Access textbooks and study materials anytime, anywhere with offline reading.</p>
           </div>
           
           <div class="feature">
@@ -714,7 +892,7 @@
               <i class="fas fa-file-alt"></i>
             </div>
             <h3 class="feature-title">Past Papers</h3>
-            <p class="feature-desc">Practice with previous exam papers and solutions.</p>
+            <p class="feature-desc">Practice with previous exam papers and solutions from the last 10 years.</p>
           </div>
           
           <div class="feature">
@@ -722,7 +900,7 @@
               <i class="fas fa-poll"></i>
             </div>
             <h3 class="feature-title">Polls & Quizzes</h3>
-            <p class="feature-desc">Engage with interactive assessments in real-time.</p>
+            <p class="feature-desc">Engage with interactive assessments and compete with classmates.</p>
           </div>
           
           <div class="feature">
@@ -730,7 +908,7 @@
               <i class="fas fa-sticky-note"></i>
             </div>
             <h3 class="feature-title">Digital Notes</h3>
-            <p class="feature-desc">Create, organize and share study notes collaboratively.</p>
+            <p class="feature-desc">Create, organize and share study notes with rich formatting options.</p>
           </div>
         </div>
       </div>
@@ -754,7 +932,7 @@
 
   <script>
     function downloadApp() {
-      const downloadUrl = "https://yammie24.github.io/downloadnzeru/assets/app/nzeruapp-v1.0.2+1.apk";
+      const downloadUrl = "https://yammie24.github.io/downloadnzeru/assets/app/Nzerubolt-V1.0.4-Official-App.apk";
       
       // Create visual feedback
       const btn = document.querySelector('.download-btn');
@@ -763,14 +941,42 @@
       
       // Simulate download delay
       setTimeout(() => {
-        window.open(downloadUrl, "_blank");
-        btn.innerHTML = '<i class="fas fa-check"></i> Download Complete!';
+        // Create temporary link to trigger download
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = 'NzeruApp-v1.0.4.apk';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        btn.innerHTML = '<i class="fas fa-check"></i> Download Started!';
         setTimeout(() => {
           btn.innerHTML = '<i class="fas fa-download"></i> Download APK';
           btn.classList.add('pulse');
         }, 2000);
       }, 1500);
     }
+
+    // Add animation to features on scroll
+    document.addEventListener('DOMContentLoaded', () => {
+      const features = document.querySelectorAll('.feature');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      features.forEach(feature => {
+        feature.style.opacity = '0';
+        feature.style.transform = 'translateY(20px)';
+        feature.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(feature);
+      });
+    });
   </script>
 </body>
 </html>
